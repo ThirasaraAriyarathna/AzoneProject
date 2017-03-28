@@ -1,12 +1,16 @@
+<app-home-nav></app-home-nav>
 <section class="inner-wrapper">
-    <div class="row offset-top-80">
+    <div class="row offset-top-50">
       <h2>Login <span>Here</span></h2>
       <div class="inner-wrapper-main">
         <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
+          <div class="row show-hide-message" *ngIf="isShow">
+            <div class="alert" [ngClass]="class">{{message}}</div>
+          </div>
           <div class="form">
-            <form action="" method="post" name="Login_Form" class="form-signin">
-              <input type="text"  class="txt" name="Username" placeholder="Username" required />
-              <input type="password"  class="txt" name="Password" placeholder="Password" required/>
+            <form (submit)="authenticate($event)" class="form-signin">
+              <input type="text"  class="txt" [(ngModel)]="user.username" name="user.username" placeholder="Username" required />
+              <input type="password"  class="txt" [(ngModel)]="user.password" name="user.password" placeholder="Password" required/>
               <div class="social-login">
                 <input type="submit" value="Login" name="submit" class="txt2">
                 <p class="hidden-xs">Or Login with</p>

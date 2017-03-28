@@ -1,14 +1,21 @@
+<app-home-nav></app-home-nav>
 <section class="inner-wrapper">
-    <div class="row offset-top-80">
+  <div class="container">
+    <div class="row offset-top-50">
       <h2>Sign Up <span>Here</span></h2>
       <div class="inner-wrapper-main">
         <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
+          <div class="row show-hide-message" *ngIf="isShow">
+            <div class="alert" [ngClass]="class">{{message}}</div>
+          </div>
           <div class="form">
-            <form class="form-signin" >
-              <input type="text"  class="txt" name="Username" placeholder="Username" required />
-              <input type="password"  class="txt" name="Password" placeholder="Password" required/>
+            <form class="form-signin" (submit)="registerStudent($event)">
+              <input type="text"  class="txt" [(ngModel)]="user.username" name="user.username" placeholder="Username" required />
+              <input type="text"  class="txt" [(ngModel)]="user.email" name="user.email" placeholder="Email" />
+              <input type="password"  class="txt" [(ngModel)]="user.password" name="user.password" placeholder="Password" required/>
+              <input type="password"  class="txt" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required/>
               <div class="social-login">
-                <input type="submit" value="Login" name="submit" class="txt2">
+                <input type="submit" value="Register" name="submit" class="txt2">
                 <p class="hidden-xs">Or Login with</p>
                 <ul class="social-icons hidden-xs">
                   <li class="facebook"><a href="javascript:void(0)" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -21,7 +28,9 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
+
 
 
 

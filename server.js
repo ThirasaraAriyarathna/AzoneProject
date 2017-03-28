@@ -5,9 +5,12 @@ const http = require('http');
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+const cors = require('cors');
+
 
 const app = express();
 app.use(morgan('dev'));
+app.use(cors());
 
 /*setting up the database connection*/
 mongoose.connect("mongodb://127.0.0.1:27017/azone", (err) => {
