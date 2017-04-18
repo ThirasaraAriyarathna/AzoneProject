@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,6 +19,11 @@ import { AddStudentComponent } from './components/add-student/add-student.compon
 import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
 import { AddAssistantComponent } from './components/add-assistant/add-assistant.component';
 import { AddClassComponent } from './components/add-class/add-class.component';
+import { AuthGuard } from './Guards/auth.guard';
+import { AdminAuthGuard } from './Guards/adminAuth.guard';
+import { AssistantAuthGuard } from './Guards/assistantAuth.guard';
+import { TeacherAuthGuard } from './Guards/teacherAuth.guard';
+import { StaffAuthGuard } from './Guards/staffAuth.guard';
 
 
 @NgModule({
@@ -39,9 +45,18 @@ import { AddClassComponent } from './components/add-class/add-class.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    DatePickerModule
   ],
-  providers: [RegisterService, AuthenticateService],
+  providers: [
+    RegisterService,
+    AuthenticateService,
+    AuthGuard,
+    AdminAuthGuard,
+    AssistantAuthGuard,
+    TeacherAuthGuard,
+    StaffAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

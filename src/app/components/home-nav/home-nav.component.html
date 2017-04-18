@@ -17,9 +17,9 @@
       <div class="col-md-8 col-sm-6">
         <ul class="top-right pull-right ">
           <!-- Login -->
-          <li class="login"><a [routerLink] ="['/login']"><i class="fa fa-lock"></i>Login</a></li>
+          <li class="login" *ngIf ="!isLogged"><a [routerLink] ="['/login']" style="text-decoration:none"><i class="fa fa-lock"></i>Login</a></li>
           <!-- Register -->
-          <li class="register"><a [routerLink] ="['/register']"><i class="fa fa-user"></i>Sign Up</a></li>
+          <li class="register" *ngIf ="!isLogged"><a [routerLink] ="['/register']" style="text-decoration:none"><i class="fa fa-user"></i>Sign Up</a></li>
           <li class="search"><i class="fa fa-search" aria-hidden="true"></i>
             <div id="search-form-container">
               <form id="search-form" action="#" style="display: none;" class="">

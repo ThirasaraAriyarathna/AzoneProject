@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from "../../services/authenticate.service";
 import {Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authenticateService: AuthenticateService) { }
+  constructor(private authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
     if(this.authenticateService.loggedIn()){
@@ -25,6 +26,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
+  logout(){
+    this.authenticateService.logout();
+    this.router.navigate(['/login']);
+  }
 
 }

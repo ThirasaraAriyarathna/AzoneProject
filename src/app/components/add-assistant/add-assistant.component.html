@@ -1,3 +1,71 @@
-<p>
-  add-assistant works!
-</p>
+<app-header></app-header>
+<section class="inner-wrapper">
+  <div class="container">
+    <div class="row">
+      <h2>Add <span>Assistant</span> </h2>
+      <div class="inner-wrapper-main">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0">
+          <div class="row show-hide-message" *ngIf="isShow">
+            <div class="alert" [ngClass]="class">{{message}}</div>
+          </div>
+          <div class="form">
+            <form id="contactFrm" name="contactFrm" (submit)="addAssistant()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="First Name" value="" [(ngModel)]="assistant.firstName" name="assistant.firstName" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="Last Name" value="" [(ngModel)]="assistant.lastName" name="assistant.lastName" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="Mobile No" value="" [(ngModel)]="assistant.mobile" name="assistant.mobile" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="Email" value="" [(ngModel)]="assistant.email" name="assistant.email" class="txt">
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <p class="hidden-xs">Gender</p>
+                </div>
+                <div class="col-sm-4">
+                  <br>
+                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="isMale" [value] ="true">Male</label>
+                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="sMale" [value] ="false">Female</label>
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <p class="hidden-xs">Date of Birth</p>
+                </div>
+                <div class="col-sm-4">
+                  <br>
+                  <ng2-datepicker [(ngModel)]="birthday" name="birthday"></ng2-datepicker>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="NIC number" value="" [(ngModel)]="assistant.nic" name="assistant.nic" class="txt">
+                </div>
+                <div class="col-sm-12">
+                  <hr>
+                  <p class="hidden-xs">Address</p>
+                </div>
+
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="Address Line 1" value="" [(ngModel)]="assistant.address1" name="student.address1" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="Address Line 2" value="" [(ngModel)]="assistant.address2" name="student.address2" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" required placeholder="City" value="" [(ngModel)]="assistant.city" name="student.city" class="txt">
+                </div>
+              </div>
+              <input type="submit" value="Add Assistant" name="submit" class="txt2">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

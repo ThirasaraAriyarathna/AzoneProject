@@ -3,44 +3,82 @@
   <!-- Pre Loader -->
   <div id="dvLoading"></div>
 </app-header>
-<!-- Banner Wrapper Start -->
-<div class="banner-wrapper">
-  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
-    <!-- Overlay -->
-    <div class="overlay"></div>
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#bs-carousel" data-slide-to="1"></li>
-      <li data-target="#bs-carousel" data-slide-to="2"></li>
-    </ol>
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item slides active">
-        <div class="slide-1"></div>
-        <div class="hero">
-          <h1 class="animated1">Education World</h1>
-          <h3 class="animated2">Duis aute irure dolor in reprehenderit in voluptate velit esse</h3>
+<!-- Satisfied Wrapper start -->
+<div class="satisfied-wrapper">
+  <div class="container">
+    <h2>Azone <span>Dashboard</span></h2>
+
+    <div class="statistics" *ngIf ="user.userRole == 'admin'">
+      <a [routerLink] ="['/addStudents']" style="text-decoration:none" >
+        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <p>Manage Students</p>
         </div>
-      </div>
-      <div class="item slides">
-        <div class="slide-2"></div>
-        <div class="hero">
-          <h1 class="animated1">Education World</h1>
-          <h3 class="animated2">Duis aute irure dolor in reprehenderit in voluptate velit esse</h3>
+      </a>
+      <a [routerLink] ="['/addAssistants']" style="text-decoration:none" >
+        <div class="col-sm-3 counter"> <i class="fa fa-user" aria-hidden="true"></i>
+          <p>Manage Staff</p>
         </div>
-      </div>
-      <div class="item slides">
-        <div class="slide-3"></div>
-        <div class="hero">
-          <h1 class="animated1">Education World</h1>
-          <h3 class="animated2">Duis aute irure dolor in reprehenderit in voluptate velit esse</h3>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <p>Manage Classes</p>
         </div>
-      </div>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-users" aria-hidden="true"></i>
+          <p>Manage Teachers</p>
+        </div>
+      </a>
     </div>
+
+    <div class="statistics" *ngIf ="user.userRole == 'assistant'">
+      <a [routerLink] ="['/addStudents']" style="text-decoration:none" >
+        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <p>Manage Students</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <p>Manage Classes</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-users" aria-hidden="true"></i>
+          <p>Manage Teachers</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="statistics" *ngIf ="user.userRole == 'teacher'">
+      <a href="#" style="text-decoration:none" >
+        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <p>Manage Students</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <p>Manage Classes</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="statistics" *ngIf ="user.userRole == 'student'">
+      <a href="#" style="text-decoration:none" >
+        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <p>Registered Classes</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <p>Available Classes</p>
+        </div>
+      </a>
+    </div>
+
+
   </div>
 </div>
-<!-- Banner Wrapper End -->
+
 <!-- About Us -->
 <div class="about-us">
   <div class="container">

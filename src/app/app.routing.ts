@@ -7,17 +7,24 @@ import {AddTeacherComponent} from "./components/add-teacher/add-teacher.componen
 import {AddAssistantComponent} from "./components/add-assistant/add-assistant.component";
 import {AddStudentComponent} from "./components/add-student/add-student.component";
 import {AddClassComponent} from "./components/add-class/add-class.component";
+import {AuthGuard} from "./Guards/auth.guard";
+import {AdminAuthGuard} from "./Guards/adminAuth.guard";
+import {StaffAuthGuard} from "./Guards/staffAuth.guard";
+import {AssistantAuthGuard} from "./Guards/assistantAuth.guard";
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'admin/addTeachers', component: AddTeacherComponent },
-  { path: 'admin/addAssistants', component: AddAssistantComponent },
-  { path: 'staff/addStudents', component: AddStudentComponent },
-  { path: 'staff/addClass', component: AddClassComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'addTeachers', component: AddTeacherComponent, canActivate: [AdminAuthGuard] },
+  { path: 'addAssistants', component: AddAssistantComponent, canActivate: [AdminAuthGuard] },
+  { path: 'addStudents', component: AddStudentComponent, canActivate: [AssistantAuthGuard] },
+  { path: 'addClasses', component: AddClassComponent, canActivate: [AssistantAuthGuard] },
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '/home' }
 ];
 
 export  const routing = RouterModule.forRoot(APP_ROUTES);

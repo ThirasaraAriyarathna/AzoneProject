@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterService} from "../../services/register.service";
+import {Assistant} from "../../models/Assistant";
 
 @Component({
   selector: 'app-add-assistant',
@@ -7,9 +9,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAssistantComponent implements OnInit {
 
-  constructor() { }
+  assistant = new Assistant();
+  isShow = false;
+  message: string;
+  class = {'alert-success': false, 'alert-danger': false};
+  isMale: boolean;
+  birthday: any;
+
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
   }
+
+  //function to add assistants to the system
+  addAssistant(){
+    event.preventDefault();
+    this.assistant.userRole = 'assistant';
+    if(this.isMale){
+      this.assistant.gender = "Male";
+    }
+    else{
+      this.assistant.gender = "Female";
+    }
+    this.assistant.birthday = this.birthday.formatted;
+    debugger
+    console.log(this.assistant.birthday);
+    console.log(this.assistant);
+    this.registerService.registerAssistant(this.assistant).subscribe(data => {
+      console.log(data.message);
+      if (data.success){
+        this.class['alert-success'] =true;
+        this.class['alert-danger'] =false;
+        this.isShow = true;
+        this.message = data.message;
+      }
+      else{
+        this.class['alert-danger'] =true;
+        this.class['alert-success'] =false;
+        this.isShow = true;
+        this.message = data.message;
+
+      }
+    }, error => {
+      alert(error);
+    });
+  }
+
 
 }

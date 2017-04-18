@@ -15,13 +15,17 @@
       </div>
       <div class="col-md-8 col-sm-6">
         <ul class="top-right pull-right ">
-          <li class="dropdown"><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><i class="fa fa-angle-down"></i>{{user.username}}</a>
+          <!-- Login -->
+          <li class="login" *ngIf ="!isLogged"><a [routerLink] ="['/login']" style="text-decoration:none"><i class="fa fa-lock"></i>Login</a></li>
+          <!-- Register -->
+          <li class="register" *ngIf ="!isLogged"><a [routerLink] ="['/register']" style="text-decoration:none"><i class="fa fa-user"></i>Sign Up</a></li>
+          <li class="dropdown" *ngIf ="isLogged"><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration:none"><i class="fa fa-user"></i><i class="fa fa-angle-down"></i>{{user.username}}</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile Settings</a></li>
-              <li><a href="#">Change password</a></li>
+              <li><a href="#" style ="color: #333">Profile Settings</a></li>
+              <li><a href="# " style ="color: #333">Change password </a></li>
             </ul>
           </li>
-          <li class="register"><a href = "" (click) = "logout()"><i class="fa fa-power-off"></i>Logout</a></li>
+          <li class="register" *ngIf ="isLogged"><a href = "#" (click) = "logout()" style="text-decoration:none"><i class="fa fa-power-off"></i>Logout</a></li>
           <li class="search"><i class="fa fa-search" aria-hidden="true"></i>
             <div id="search-form-container">
               <form id="search-form" action="#" style="display: none;" class="">
@@ -35,26 +39,7 @@
       </div>
     </div>
   </div>
-  <div class="logo-bar hidden-xs">
-    <div class="container">
-      <!-- Logo -->
-      <div class="row">
-        <div class="col-sm-4"><a href="#"> <img src="../../../assets/education-world-html/images/logo.png" alt="Education World"></a> </div>
-        <div class="col-sm-8">
-          <ul class="contact-info pull-right">
-            <li><i class="fa fa-phone"></i>
-              <p> <span>Call us</span><br>
-                +1-012-345-6789</p>
-            </li>
-            <li><i class="fa fa-envelope"></i>
-              <p><span>Email Us</span><br>
-                <a href="mailto:support@sbtechnosoft.com">support@sbtechnosoft.com</a></p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <div class="wow fadeInDown navigation" data-offset-top="197" data-spy="affix">
     <div class="container">
       <nav class="navbar navbar-default">
@@ -67,98 +52,35 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown"><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Elements <i class="fa fa-angle-down"></i></a>
+              <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Grid</a></li>
-                  <li><a href="#">Tables</a></li>
-                  <li><a href="#">Tabs</a></li>
-                  <li><a href="#">Accordions</a></li>
-                  <li><a href="#">Forms</a></li>
-                  <li><a href="#">Buttons</a></li>
-                  <li><a href="#">Lists</a></li>
-                  <li><a href="#">Typography</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a [routerLink] ="['/addStudents']" style="text-decoration:none">Add Students</a></li>
+                  <li><a href="#">Search Students</a></li>
                 </ul>
               </li>
-              <li class="dropdown mega-menu"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio <i class="fa fa-angle-down"></i></a>
+              <li class="dropdown" *ngIf ="user.userRole == 'admin'"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assistants <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-2 col-md-offset-1">
-                        <ul class="list-unstyled">
-                          <li><span>Eliments</span></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Grid</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Tables</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Tabs</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Accordions</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Forms</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Buttons</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Lists</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Typography</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-2">
-                        <ul class="list-unstyled">
-                          <li><span>Courses</span></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Course List</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Course Grid</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Course Details</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-2">
-                        <ul class="list-unstyled">
-                          <li><span>News</span></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Classic News</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Grid News</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Masonry News</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>News Post Page</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-2">
-                        <ul class="list-unstyled">
-                          <li><span>Gallery</span></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Grid Gallery</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Full Width Gallery</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Masonry Gallery</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Modern Gallery</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-2">
-                        <ul class="list-unstyled">
-                          <li><span>Pages</span></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>About Us</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>Coming Soon</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>404</a></li>
-                          <li><a href="#"><span class="fa fa-angle-right menu-icon"></span>FAQ</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                  <li><a [routerLink] ="['/addAssistants']" style="text-decoration:none">Add Assistants</a></li>
+                  <li><a href="#">Search Assistant</a></li>
                 </ul>
               </li>
-              <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses <i class="fa fa-angle-down"></i></a>
+              <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teachers <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Course List</a></li>
-                  <li><a href="#">Course Grid</a></li>
-                  <li><a href="#">Course Details</a></li>
+                  <li *ngIf ="user.userRole == 'admin'"><a href="#">Add Teachers</a></li>
+                  <li><a href="#">Search Teachers</a></li>
                 </ul>
               </li>
-              <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News <i class="fa fa-angle-down"></i></a>
+              <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Classes <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Classic News</a></li>
-                  <li><a href="#">Grid News</a></li>
-                  <li><a href="#">Masonry News</a></li>
-                  <li><a href="#">News Post Page</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "><a href="#">Add Classes</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a href="#">Add Subject</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a href="#">Add Batch</a></li>
+                  <li><a href="#">Search Classes</a></li>
                 </ul>
               </li>
-              <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <i class="fa fa-angle-down"></i></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Grid Gallery</a></li>
-                  <li><a href="#">Full Width Gallery</a></li>
-                  <li><a href="#">Masonry Gallery</a></li>
-                  <li><a href="#">Modern Gallery</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <i class="fa fa-angle-down"></i></a>
+              <li *ngIf ="!isLogged"><a href="#">Our Teachers</a></li>
+              <li *ngIf ="!isLogged"><a href="#">Our Classes</a></li>
+              <li *ngIf ="!isLogged" class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About us <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">About Us</a></li>
                   <li><a href="#">Coming Soon</a></li>

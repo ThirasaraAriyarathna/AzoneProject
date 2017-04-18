@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         this.isShow = true;
         this.message = data.message;
         this.authenticateService.setToken(data.token);
+        this.authenticateService.setUser();
         this.router.navigate(['/dashboard']);
       }
       else{

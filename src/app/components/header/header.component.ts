@@ -11,27 +11,36 @@ import {User} from "../../models/User";
 export class HeaderComponent implements OnInit {
 
   user= new User();
+  isLogged: boolean;
   constructor(private authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
-    if(this.authenticateService.loggedIn()){
-      this.authenticateService.getUser().subscribe(
-        data => {
-          this.user.username = data.username;
-          this.user.email = data.email;
-          this.user.userRole = data.role;
-        },
-        error => {alert(error);}
-      );
+    //checking for user details on init
+    if(this.authenticateService.loggedIn()) {
+      this.authenticateService.getUser().subscribe(data =>{
+        this.user.username = data.username;
+        this.user.email = data.email;
+        this.user.userRole = data.role;
+        this.isLogged = true;
+      },
+      error => {
+        alert(error);
+      });
+
     }
+
     else{
+      this.isLogged = false;
       this.router.navigate(['/login']);
     }
+
+    this.authenticateService.setUser();
 
   }
 
   logout(){
     this.authenticateService.logout();
+    this.isLogged = false;
     this.router.navigate(['/login']);
   }
 }
