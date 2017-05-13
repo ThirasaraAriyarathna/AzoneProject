@@ -24,6 +24,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/azone", (err) => {
 
 /*define api routes path*/
 const api = require('./server/routes/api');
+const add = require('./server/routes/class');
 
 
 //Parsers for post data
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 //setup api routes
 app.use('/api',api);
+app.use('/api/class',add);
 
 
 //catch all other routes and return the index file

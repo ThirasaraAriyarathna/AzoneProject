@@ -1,3 +1,92 @@
-<p>
-  add-class works!
-</p>
+<app-header></app-header>
+<section class="inner-wrapper">
+  <div class="container">
+    <div class="row">
+      <h2>Add <span>Class</span> </h2>
+      <div class="inner-wrapper-main">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0">
+          <div class="row show-hide-message" *ngIf="isShow">
+            <div class="alert" [ngClass]="css">{{message}}</div>
+          </div>
+          <div class="form">
+            <form id="contactFrm" name="contactFrm" (submit)="addClass()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Class Name</label>
+                  <input type="text" required placeholder="Class Name" value="" [(ngModel)]="class.name" name="class.name" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Subject</label>
+                  <div class="input-group">
+                    <app-dropdown [values]="tdrops" (changeValue)="setSubject($event)"></app-dropdown>
+                    <div class="input-group-btn" >
+                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Batch</label>
+                  <div class="input-group">
+                    <app-dropdown [values]="tdrops" (changeValue)="setBatch($event)"></app-dropdown>
+                    <div class="input-group-btn" >
+                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label>Teacher</label>
+                  <div class="input-group">
+                    <app-dropdown [values]="tdrops" (changeValue)="setTeacher($event)"></app-dropdown>
+                    <div class="input-group-btn" >
+                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 form-group">
+                  <div>
+                    <label>Fees</label>
+                  </div>
+                  <span class="btn btn-default btn-flat">RS</span><input type="number" required placeholder="Fees" value="" [(ngModel)]="class.fees" name="class.fees" class="txt">
+                </div>
+                <!--<div class="col-sm-6">-->
+                  <!--<input [ngModel]="myDate | date: 'shortTime'" name="myDate" (ngModel)="myDate" ngui-datetime-picker time-only="true" />-->
+                <!--</div>-->
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Start Date</label>
+                  <ng2-datepicker [(ngModel)]="startDate" name="startDate" [options]="optionsStart" ></ng2-datepicker>
+                </div>
+                <div class="col-sm-6">
+                  <label>End Date</label>
+                  <ng2-datepicker [(ngModel)]="endDate" name="endDate" [options]="optionsEnd" ></ng2-datepicker>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Start Time</label>
+                  <input type="text" required placeholder="Start Time" value="" [(ngModel)]="class.startTime" name="class.startTime" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>End Time</label>
+                  <input type="text" required placeholder="End Time" value="" [(ngModel)]="class.endTime" name="class.endTime" class="txt">
+                </div>
+              </div>
+              <input type="submit" value="Add Class" name="submit" class="txt2">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

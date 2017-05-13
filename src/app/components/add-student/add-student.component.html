@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-sm-4">
                   <br>
-                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="student.isMale" [value] ="true">Male</label>
+                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="student.isMale" [value] ="true" aria-selected="true">Male</label>
                   <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="student.isMale" [value] ="false">Female</label>
                 </div>
                 <div class="col-sm-2">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-sm-4">
                   <br>
-                  <ng2-datepicker [(ngModel)]="birthday" name="birthday"></ng2-datepicker>
+                  <ng2-datepicker [(ngModel)]="birthday" name="birthday" [options]="options" ></ng2-datepicker>
                 </div>
                 <div class="col-sm-12">
                   <hr>

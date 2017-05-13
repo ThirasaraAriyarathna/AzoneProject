@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DatePickerModule } from 'ng2-datepicker';
+import { MomentModule } from 'angular2-moment';
+import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import {routing} from "./app.routing";
+import { routing } from "./app.routing";
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import {RegisterService} from "./services/register.service";
+import { RegisterService } from "./services/register.service";
 import { MessageComponent } from './components/message/message.component';
-import {AuthenticateService} from "./services/authenticate.service";
+import { AuthenticateService } from "./services/authenticate.service";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeNavComponent } from './components/home-nav/home-nav.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
@@ -24,6 +27,8 @@ import { AdminAuthGuard } from './Guards/adminAuth.guard';
 import { AssistantAuthGuard } from './Guards/assistantAuth.guard';
 import { TeacherAuthGuard } from './Guards/teacherAuth.guard';
 import { StaffAuthGuard } from './Guards/staffAuth.guard';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import {ClassService} from "./services/class.service";
 
 
 @NgModule({
@@ -39,14 +44,17 @@ import { StaffAuthGuard } from './Guards/staffAuth.guard';
     AddStudentComponent,
     AddTeacherComponent,
     AddAssistantComponent,
-    AddClassComponent
+    AddClassComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
-    DatePickerModule
+    DatePickerModule,
+    MomentModule,
+    NguiDatetimePickerModule
   ],
   providers: [
     RegisterService,
@@ -55,7 +63,8 @@ import { StaffAuthGuard } from './Guards/staffAuth.guard';
     AdminAuthGuard,
     AssistantAuthGuard,
     TeacherAuthGuard,
-    StaffAuthGuard
+    StaffAuthGuard,
+    ClassService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../models/User";
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/map';
-import {AppComponent} from "../app.component";
+
 
 
 @Injectable()

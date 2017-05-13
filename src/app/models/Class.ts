@@ -1,10 +1,15 @@
 export class Class{
   name: string;
-  subject: string;
+  subjectId: string;
+  subjectName: string;
   fees: number;
-  teacher: string;
-  batch: string;
-  year: number;
+  teacherId: string;
+  teacherName: string;
+  teacherDescription: string;
+  batchId: string;
+  batchName: string;
+  startDate: string;
+  endDate: string;
   day: string;
   startTime: string;
   endTime: string;

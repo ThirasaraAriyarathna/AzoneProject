@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from "../../models/Student";
-import {User} from "../../models/User";
 import {RegisterService} from "../../services/register.service";
+import { DatePickerOptions, DateModel} from "ng2-datepicker";
+
+
+
 
 @Component({
   selector: 'app-add-student',
@@ -15,11 +18,20 @@ export class AddStudentComponent implements OnInit {
   message: string;
   class = {'alert-success': false, 'alert-danger': false};
   isMale: boolean;
-  birthday: any;
+  birthday: DateModel;
+  options: DatePickerOptions;
+  today: Date;
+
 
   constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
+    this.today = new Date();
+    this.options = new DatePickerOptions({
+      format: 'DD-MM-YYYY',
+      initialDate: this.today,
+      maxDate: this.today
+    });
   }
 
 
@@ -35,9 +47,9 @@ export class AddStudentComponent implements OnInit {
       this.student.gender = "Female";
     }
     this.student.birthday = this.birthday.formatted;
-    debugger
     console.log(this.student.birthday);
     console.log(this.student);
+
     this.registerService.registerStudent(this.student).subscribe(data => {
       console.log(data.message);
       if (data.success){
