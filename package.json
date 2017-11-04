@@ -10,9 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "git push origin master && git push heroku master",
-    "postinstall": "ng build --aot -prod"
   },
-  "private": true,
   "dependencies": {
     "@angular/cli": "1.0.0-rc.4",
     "@angular/common": "^2.4.0",
