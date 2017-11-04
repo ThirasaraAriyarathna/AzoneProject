@@ -12,15 +12,19 @@
             <form id="contactFrm" name="contactFrm" (submit)="addAssistant()">
               <div class="row">
                 <div class="col-sm-6">
+                  <label>Fist Name</label>
                   <input type="text" required placeholder="First Name" value="" [(ngModel)]="assistant.firstName" name="assistant.firstName" class="txt">
                 </div>
                 <div class="col-sm-6">
+                  <label>Last Name</label>
                   <input type="text" required placeholder="Last Name" value="" [(ngModel)]="assistant.lastName" name="assistant.lastName" class="txt">
                 </div>
                 <div class="col-sm-6">
+                  <label>Mobile</label>
                   <input type="text" required placeholder="Mobile No" value="" [(ngModel)]="assistant.mobile" name="assistant.mobile" class="txt">
                 </div>
                 <div class="col-sm-6">
+                  <label>Email</label>
                   <input type="text" required placeholder="Email" value="" [(ngModel)]="assistant.email" name="assistant.email" class="txt">
                 </div>
                 <div class="col-sm-2">
@@ -38,9 +42,10 @@
                 </div>
                 <div class="col-sm-4">
                   <br>
-                  <ng2-datepicker [(ngModel)]="birthday" name="birthday"></ng2-datepicker>
+                  <ng2-datepicker [(ngModel)]="birthday" name="birthday" [options]="options"></ng2-datepicker>
                 </div>
                 <div class="col-sm-6">
+                  <label>NIC number</label>
                   <input type="text" required placeholder="NIC number" value="" [(ngModel)]="assistant.nic" name="assistant.nic" class="txt">
                 </div>
                 <div class="col-sm-12">
@@ -49,13 +54,16 @@
                 </div>
 
                 <div class="col-sm-6">
-                  <input type="text" required placeholder="Address Line 1" value="" [(ngModel)]="assistant.address1" name="student.address1" class="txt">
+                  <label>Address Line 1</label>
+                  <input type="text" required placeholder="Address Line 1" value="" [(ngModel)]="assistant.address1" name="assistant.address1" class="txt">
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" required placeholder="Address Line 2" value="" [(ngModel)]="assistant.address2" name="student.address2" class="txt">
+                  <label>Address Line 2</label>
+                  <input type="text" required placeholder="Address Line 2" value="" [(ngModel)]="assistant.address2" name="assistant.address2" class="txt">
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" required placeholder="City" value="" [(ngModel)]="assistant.city" name="student.city" class="txt">
+                  <label>City</label>
+                  <input type="text" required placeholder="City" value="" [(ngModel)]="assistant.city" name="assistant.city" class="txt">
                 </div>
               </div>
               <input type="submit" value="Add Assistant" name="submit" class="txt2">

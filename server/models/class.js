@@ -14,13 +14,14 @@ var ClassSchema = new Schema({
     _id: {type: Schema.Types.ObjectId, required: true},
     name: {type: String, required: true}
   },
-  Teacher: {
+  teacher: {
     _id: {type: Schema.Types.ObjectId, required: true},
     name: {type: String, required: true},
     description: {type: String}
   },
+  fees: {type: Number, required: true},
   start_date: {type: Date, required: true},
-  start_time: {type: Date, required: true},
+  start_time: {type: String, required: true},
   end_time: {type: String, required: true},
   end_date:{type: Date, require: true},
   days: [{

@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0">
+      <div class="cmg-bg">
+        <section class="inner-wrapper">
+          <h1>{{tday}}</h1>
+          <div class="jumbotron">
+            <div class="col-sm-2">
+              <img src="../../../assets/education-world-html/images/attendance-image.png">
+            </div>
+            <app-search-box class="asearch" (onSearch)="searchStudentId($event)"></app-search-box>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#mark-attendance">Open Modal</button>
+<div class="modal fade" id="mark-attendance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Mark Attendace of this Student</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to Mark attendance or Topup ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-success" data-dismiss="modal" (click)="markAttendance(student._id)" >MarkAttendance</button>
+        <button class_id="" class="btn btn-primary" data-dismiss="modal" (click)="topup(student._id)" >Top Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<div class="container">-->
+
+    <div *ngIf="noResults">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0">
+        <div class="cmg-bg">
+          <section class="inner-wrapper">
+            <div class="jumbotron">
+              No Results Found
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="haveResults">
+      <div class="jumbotron col-sm-5" *ngFor="let i of classesFull">
+        <p class="class-heading"><strong>{{i.name}}</strong></p>
+        <span>Subject: {{i.subject.name}} </span><br>
+        <span>Conducted by: {{i.teacher.name}}</span><br><br><br>
+        <!--<span>Started On: {{i.start_date.toDateString()}}</span><br>-->
+        <!--<span>On Every: </span><br>-->
+        <a class="btn btn-primary btn view" (onclick) ="selectClass(i._id)" role="button">Mark Attendance</a>
+      </div>
+    </div>
+
+<!--</div>-->
+
+

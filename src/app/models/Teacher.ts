@@ -5,10 +5,10 @@ export class Teacher{
   email: string;
   gender: string;
   nic: string;
-  address: {
-    address1: string;
-    address2: string;
-    city: string;
-  }
-
+  birthday: string;
+  address1: string;
+  address2: string;
+  city: string;
+  userRole: string;
+  description: string;
 }

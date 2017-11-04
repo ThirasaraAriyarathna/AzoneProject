@@ -7,7 +7,7 @@ var UserSchema = new Schema({
   //defining fields
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  email:{type: String},
+  email:{type: String, required: true},
   user_role: {type: String, required: true}
 });
 

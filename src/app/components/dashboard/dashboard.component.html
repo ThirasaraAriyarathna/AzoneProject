@@ -5,49 +5,67 @@
 </app-header>
 <!-- Satisfied Wrapper start -->
 <div class="satisfied-wrapper">
-  <div class="container">
+  <div class="col-md-9 col-xs-offset-2">
     <h2>Azone <span>Dashboard</span></h2>
 
     <div class="statistics" *ngIf ="user.userRole == 'admin'">
       <a [routerLink] ="['/addStudents']" style="text-decoration:none" >
-        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/students.png" alt="">
           <p>Manage Students</p>
         </div>
       </a>
       <a [routerLink] ="['/addAssistants']" style="text-decoration:none" >
-        <div class="col-sm-3 counter"> <i class="fa fa-user" aria-hidden="true"></i>
+        <div class="col-sm-2 counter"><img src="../../../assets/education-world-html/images/assistant.png" alt="">
           <p>Manage Staff</p>
         </div>
       </a>
-      <a href="#">
-        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+      <a [routerLink] ="['/searchClass']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/class.png" alt="">
           <p>Manage Classes</p>
         </div>
       </a>
-      <a href="#">
-        <div class="col-sm-3 counter"> <i class="fa fa-users" aria-hidden="true"></i>
+      <a [routerLink] ="['/addTeacher']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/teacher.png" alt="">
           <p>Manage Teachers</p>
+        </div>
+      </a>
+
+      <a [routerLink] ="['/markAttendance']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/attendace-image.png" alt="">
+          <p>Mark Attendance</p>
         </div>
       </a>
     </div>
 
     <div class="statistics" *ngIf ="user.userRole == 'assistant'">
       <a [routerLink] ="['/addStudents']" style="text-decoration:none" >
-        <div class="col-sm-3 counter"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/students.png" alt="">
           <p>Manage Students</p>
         </div>
       </a>
-      <a href="#">
-        <div class="col-sm-3 counter"> <i class="fa fa-list-alt" aria-hidden="true"></i>
+      <a [routerLink] ="['/addAssistants']" style="text-decoration:none" >
+        <div class="col-sm-2 counter"><img src="../../../assets/education-world-html/images/assistant.png" alt="">
+          <p>Manage Staff</p>
+        </div>
+      </a>
+      <a [routerLink] ="['/searchClass']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/class.png" alt="">
           <p>Manage Classes</p>
         </div>
       </a>
-      <a href="#">
-        <div class="col-sm-3 counter"> <i class="fa fa-users" aria-hidden="true"></i>
+      <a [routerLink] ="['/addTeacher']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/teacher.png" alt="">
           <p>Manage Teachers</p>
         </div>
       </a>
+
+      <a [routerLink] ="['/markAttendance']" style="text-decoration:none">
+        <div class="col-sm-2 counter"> <img src="../../../assets/education-world-html/images/attendace-image.png" alt="">
+          <p>Mark Attendance</p>
+        </div>
+      </a>
     </div>
+
 
     <div class="statistics" *ngIf ="user.userRole == 'teacher'">
       <a href="#" style="text-decoration:none" >

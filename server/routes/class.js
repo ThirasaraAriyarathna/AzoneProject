@@ -5,6 +5,9 @@ var User = require('../models/user');
 var Student = require('../models/student');
 var Assistant = require('../models/assistant');
 var Class = require('../models/class');
+var Teacher = require('../models/teacher');
+var Batch = require('../models/batch');
+var Subject = require('../models/subject');
 
 
 

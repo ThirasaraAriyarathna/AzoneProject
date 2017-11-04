@@ -1,0 +1,80 @@
+<app-header></app-header>
+<section class="inner-wrapper">
+  <div class="container">
+    <div class="row">
+      <h2>Add <span>Teacher</span> </h2>
+      <div class="inner-wrapper-main">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0">
+          <div class="row show-hide-message" *ngIf="isShow">
+            <div class="alert" [ngClass]="class">{{message}}</div>
+          </div>
+          <div class="form">
+            <form id="contactFrm" name="contactFrm" (submit)="addTeacher()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>First Name</label>
+                  <input type="text" required placeholder="First Name" value="" [(ngModel)]="teacher.firstName" name="teacher.firstName" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Last Name</label>
+                  <input type="text" required placeholder="Last Name" value="" [(ngModel)]="teacher.lastName" name="teacher.lastName" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Mobile</label>
+                  <input type="text" required placeholder="Mobile No" value="" [(ngModel)]="teacher.mobile" name="teacher.mobile" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Email</label>
+                  <input type="text" required placeholder="Email" value="" [(ngModel)]="teacher.email" name="teacher.email" class="txt">
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <p class="hidden-xs">Gender</p>
+                </div>
+                <div class="col-sm-4">
+                  <br>
+                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="isMale" [value] ="true" aria-selected="true">Male</label>
+                  <label class="radio-inline"><input type="radio" [(ngModel)]="isMale" name="sMale" [value] ="false">Female</label>
+                </div>
+                <div class="col-sm-2">
+                  <br>
+                  <p class="hidden-xs">Date of Birth</p>
+                </div>
+                <div class="col-sm-4">
+                  <br>
+                  <ng2-datepicker [(ngModel)]="birthday" name="birthday" [options]="options"></ng2-datepicker>
+                </div>
+                <div class="col-sm-6">
+                  <label>NIC number</label>
+                  <input type="text" required placeholder="NIC number" value="" [(ngModel)]="teacher.nic" name="teacher.nic" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Description About Teacher</label>
+                  <textarea class="form-control" rows="5" placeholder="Description about teacher to be displayed" [(ngModel)]="teacher.description" name="teacher.description"></textarea>
+                </div>
+                <div class="col-sm-12">
+                  <hr>
+                  <p class="hidden-xs">Address</p>
+                </div>
+
+                <div class="col-sm-6">
+                  <label>Address Line 1</label>
+                  <input type="text" required placeholder="Address Line 1" value="" [(ngModel)]="teacher.address1" name="teacher.address1" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>Address Line 2</label>
+                  <input type="text" required placeholder="Address Line 2" value="" [(ngModel)]="teacher.address2" name="teacher.address2" class="txt">
+                </div>
+                <div class="col-sm-6">
+                  <label>City</label>
+                  <input type="text" required placeholder="City" value="" [(ngModel)]="teacher.city" name="teacher.city" class="txt">
+                </div>
+              </div>
+              <input type="submit" value="Add Teacher" name="submit" class="txt2">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

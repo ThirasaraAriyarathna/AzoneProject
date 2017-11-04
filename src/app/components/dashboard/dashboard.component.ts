@@ -22,6 +22,12 @@ export class DashboardComponent implements OnInit {
           this.user.email = data.email;
           this.user.userRole = data.role;
           this.isLogged = true;
+          if(this.user.userRole == "student"){
+            this.router.navigate(['/searchClass']);
+          }
+          else if(this.user.userRole == "teacher"){
+            this.router.navigate(['/searchClass']);
+          }
         },
         error => {
           alert(error);

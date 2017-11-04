@@ -1,4 +1,5 @@
 <select class="form-control" id="sel1" (change)="select($event.target)">
+  <option>Select a value</option>
   <option  *ngFor="let i of values" [ngValue]="i" >{{i.value}}</option>
 </select>
 

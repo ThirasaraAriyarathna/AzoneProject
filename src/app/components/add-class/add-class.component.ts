@@ -12,9 +12,6 @@ import {ClassService} from "../../services/class.service";
 export class AddClassComponent implements OnInit {
 
   class = new Class();
-  teachers: any[];
-  batches: any[];
-  subjects: any[];
   tdrops: DropdownValue[];
   bdrops: DropdownValue[];
   sdrops: DropdownValue[];
@@ -38,11 +35,49 @@ export class AddClassComponent implements OnInit {
   ngOnInit() {
 
     this.classService.getTeachers().subscribe(data =>{
-        this.teachers = data;
+        console.log(data);
+        this.tdrops = []
+        if(data.length > 0){
+          for (let teacher of data){
+            var item = new DropdownValue(teacher._id, teacher.first_name.concat(' ',teacher.last_name) );
+            item.description = teacher.description;
+            this.tdrops.push(item);
+          }
+        }
+
       },
       error => {
         alert(error);
       });
+    this.classService.getBatches().subscribe(data =>{
+        console.log(data);
+      if(data.length > 0){
+        this.bdrops = [];
+        for (let batch of data){
+          var item = new DropdownValue(batch._id, batch.name );
+          this.bdrops.push(item);
+        }
+      }
+
+      },
+      error => {
+        alert(error);
+      });
+    this.classService.getSubjects().subscribe(data =>{
+        console.log(data);
+      if(data.length > 0){
+        this.sdrops = [];
+        for (let subject of data){
+          var item = new DropdownValue(subject._id, subject.name );
+          this.sdrops.push(item);
+        }
+      }
+
+      },
+      error => {
+        alert(error);
+      });
+
 
     this.today = new Date();
     this.optionsStart = new DatePickerOptions({
@@ -51,48 +86,100 @@ export class AddClassComponent implements OnInit {
 
     this.endDay = new Date();
     this.endDay.setFullYear(this.today.getFullYear()+10, 0, 0);
+    console.log(this.endDay)
     this.optionsEnd = new DatePickerOptions({
-      initialDate: this.today,
-      maxDate: this.endDay,
-      minDate: this.today
-
+      initialDate: this.today
     });
 
-    var temp1 = new DropdownValue('1','Ariyarathna');
-    var temp2 = new DropdownValue('2','Janaka');
-    var temp3 = new DropdownValue('3','Hiran');
-    var temp4 = new DropdownValue('4','Kusal');
-    this.tdrops = [];
-    this.tdrops.push(temp1, temp2, temp3, temp4);
-    this.class.teacherId = this.tdrops[0].id;
-    this.class.teacherName = this.tdrops[0].value;
   }
 
   addClass(){
     event.preventDefault();
 
-    console.log(this.class.name);
+    console.log(this.class);
 
-    console.log(this.class.teacherId);
+    if(this.class.teacherId == ""){
+      this.css['alert-danger'] =true;
+      this.css['alert-success'] =false;
+      this.isShow = true;
+      this.message = "Please select a value for Teacher";
+    }
+    else if(this.class.batchId == ""){
+      this.css['alert-danger'] =true;
+      this.css['alert-success'] =false;
+      this.isShow = true;
+      this.message = "Please select a value for Batch";
+    }
+    else if(this.class.subjectId == ""){
+      this.css['alert-danger'] =true;
+      this.css['alert-success'] =false;
+      this.isShow = true;
+      this.message = "Please select a value for Subject";
+    }
+    else{
+      this.class.startDate = this.startDate.formatted;
+      this.class.endDate = this.endDate.formatted;
+      this.classService.addClass(this.class).subscribe(data => {
+        console.log(data.message);
+        if (data.success){
+          this.css['alert-success'] =true;
+          this.css['alert-danger'] =false;
+          this.isShow = true;
+          this.message = data.message;
+        }
+        else{
+          this.css['alert-danger'] =true;
+          this.css['alert-success'] =false;
+          this.isShow = true;
+          this.message = data.message;
+
+        }
+      }, error => {
+        alert(error);
+      });
+    }
+
   }
 
   setTeacher(value: number){
     console.log(value);
-    console.log(this.startDate);
-    this.class.teacherId = this.tdrops[value].id;
-    this.class.teacherName= this.tdrops[value].value;
+    if(value == 0){
+      this.class.teacherId = "";
+      this.class.teacherName= "";
+      this.class.teacherDescription= "";
+    }
+    else{
+      this.class.teacherId = this.tdrops[value-1].id;
+      this.class.teacherName= this.tdrops[value-1].value;
+      this.class.teacherDescription= this.tdrops[value-1].description;
+    }
+
 
   }
   setBatch(value: number){
     console.log(value);
-    this.class.teacherId = this.tdrops[value].id;
-    this.class.teacherName= this.tdrops[value].value;
+    if(value == 0){
+      this.class.teacherId = "";
+      this.class.teacherName= "";
+    }
+    else{
+      this.class.batchId = this.bdrops[value-1].id;
+      this.class.batchName= this.bdrops[value-1].value;
+    }
+
 
   }
   setSubject(value: number){
     console.log(value);
-    this.class.teacherId = this.tdrops[value].id;
-    this.class.teacherName= this.tdrops[value].value;
+    if(value == 0){
+      this.class.teacherId = "";
+      this.class.teacherName= "";
+    }
+    else{
+      this.class.subjectId = this.sdrops[value-1].id;
+      this.class.subjectName= this.sdrops[value-1].value;
+    }
+
 
   }
 

@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<!--<div class="jumbotron">-->
+  <!--<p>Class Name</p>-->
+  <!--<span>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</span>-->
+  <!--<a class="btn btn-primary btn" href="#" role="button">Learn more</a>-->
+<!--</div>-->
+
+<section class="inner-wrapper">
+  <div class="row col-sm-8 col-xs-offset-2">
+    <div class="col-sm-2">
+      <img src="../../../assets/education-world-html/images/search-class.png">
+    </div>
+    <app-search-by-catogory [categories]="searchCategories" (onSearch)="searchClass($event)"></app-search-by-catogory>
+  </div>
+  <br><br><br><br><br><br>
+  <div class="row col-sm-10 col-xs-offset-1">
+
+
+      <div class="jumbotron col-sm-5" *ngFor="let i of classes">
+        <p class="class-heading"><strong>{{i.name}}</strong></p>
+        <span>Subject: {{i.subject.name}} </span><br>
+        <span>Conducted by: {{i.teacher.name}}</span><br><br><br>
+        <!--<span>Started On: {{i.start_date.toDateString()}}</span><br>-->
+        <!--<span>On Every: </span><br>-->
+        <a class="btn btn-primary btn view" [routerLink] ="['/viewClass', i._id]" role="button">View Class</a>
+      </div>
+
+
+  </div>
+</section>
+
+
+<!--<div class="row col-sm-8 col-xs-offset-3">-->
+  <!--<div class="col-sm-3">-->
+    <!--<select class="form-control category">-->
+      <!--<option>Select a value</option>-->
+      <!--<option>Select a value</option>-->
+    <!--</select>-->
+  <!--</div>-->
+
+  <!--<div class="col-sm-6 subscirbe">-->
+    <!--<div class="form">-->
+      <!--<input type="text" placeholder="Search Student ID" [(ngModel)]="searchText" name="searchText" class="form-control first">-->
+      <!--<input type="text" class="bttn" value="Search" (click)="search()">-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+

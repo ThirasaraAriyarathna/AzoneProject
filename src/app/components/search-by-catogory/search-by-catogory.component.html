@@ -1,0 +1,12 @@
+<div class="col-sm-3">
+  <select class="form-control category" (change)="selectCategory($event.target)">
+    <option  *ngFor="let i of categories" [ngValue]="i" >{{i}}</option>
+  </select>
+</div>
+
+<div class="col-sm-6 subscirbe">
+  <div class="form">
+    <input type="text" placeholder="Search Student ID" [(ngModel)]="searchText" name="searchText" class="form-control first">
+    <input type="text" class="bttn" value="Search" (click)="search()">
+  </div>
+</div>

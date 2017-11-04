@@ -28,7 +28,6 @@ export class AddStudentComponent implements OnInit {
   ngOnInit() {
     this.today = new Date();
     this.options = new DatePickerOptions({
-      format: 'DD-MM-YYYY',
       initialDate: this.today,
       maxDate: this.today
     });

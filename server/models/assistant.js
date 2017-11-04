@@ -14,10 +14,11 @@ var AssistantSchema = new Schema({
   gender: {type: String, required: true},
   nic: {type:String, required:true},
   address: {
-    Line1: {type: String, required: true},
-    Line1: {type: String, required: true},
+    line1: {type: String, required: true},
+    line2: {type: String, required: true},
     city: {type: String, required: true}
   },
+  is_delete: {type: Boolean, default: false}
 });
 
 

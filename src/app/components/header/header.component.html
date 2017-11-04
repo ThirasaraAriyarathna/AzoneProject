@@ -52,6 +52,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a [routerLink] ="['/dashboard']" *ngIf ="isLogged">Dashboard</a></li>
               <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "><a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
                   <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a [routerLink] ="['/addStudents']" style="text-decoration:none">Add Students</a></li>
@@ -66,13 +67,14 @@
               </li>
               <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teachers <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li *ngIf ="user.userRole == 'admin'"><a href="#">Add Teachers</a></li>
+                  <li *ngIf ="user.userRole == 'admin'"><a [routerLink] ="['/addTeachers']">Add Teachers</a></li>
                   <li><a href="#">Search Teachers</a></li>
                 </ul>
               </li>
               <li class="dropdown" *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Classes <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant' || user.userRole == 'teacher' "><a href="#">Add Classes</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a [routerLink] ="['/addClasses']">Add Classes</a></li>
+                  <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a [routerLink] ="['/searchClass']">Add Classes</a></li>
                   <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a href="#">Add Subject</a></li>
                   <li *ngIf ="user.userRole == 'admin' || user.userRole == 'assistant'"><a href="#">Add Batch</a></li>
                   <li><a href="#">Search Classes</a></li>

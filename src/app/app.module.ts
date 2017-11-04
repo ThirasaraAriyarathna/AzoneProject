@@ -28,7 +28,14 @@ import { AssistantAuthGuard } from './Guards/assistantAuth.guard';
 import { TeacherAuthGuard } from './Guards/teacherAuth.guard';
 import { StaffAuthGuard } from './Guards/staffAuth.guard';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import {ClassService} from "./services/class.service";
+import { ClassService } from "./services/class.service";
+import { MarkAttendanceComponent } from './components/mark-attendance/mark-attendance.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { MarkAttendanceService } from "./services/mark-attendance.service";
+import { SearchClassComponent } from './components/search-class/search-class.component';
+import { SearchByCatogoryComponent } from './components/search-by-catogory/search-by-catogory.component';
+import { ClassViewComponent } from './components/class-view/class-view.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -45,7 +52,13 @@ import {ClassService} from "./services/class.service";
     AddTeacherComponent,
     AddAssistantComponent,
     AddClassComponent,
-    DropdownComponent
+    DropdownComponent,
+    MarkAttendanceComponent,
+    SearchBoxComponent,
+    SearchClassComponent,
+    SearchByCatogoryComponent,
+    ClassViewComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +77,8 @@ import {ClassService} from "./services/class.service";
     AssistantAuthGuard,
     TeacherAuthGuard,
     StaffAuthGuard,
-    ClassService
+    ClassService,
+    MarkAttendanceService,
   ],
   bootstrap: [AppComponent]
 })

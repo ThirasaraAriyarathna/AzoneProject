@@ -1,0 +1,11 @@
+.jumbotron {
+  margin-bottom: 0px;
+  height: 300px;
+}
+/*:host(.asearch){*/
+  /*position: relative;*/
+  /*margin-top: 300px;*/
+/*}*/
+img{
+  position: relative;
+}

@@ -1,0 +1,196 @@
+<app-header></app-header>
+
+<!-- Inner Banner Wrapper Start -->
+<div class="inner-banner">
+  <div class="container">
+    <div class="col-sm-12">
+      <h2>Class Details</h2>
+    </div>
+  </div>
+</div>
+<!-- Inner Banner Wrapper End -->
+<section class="inner-wrapper">
+  <div class="container">
+    <div class="row show-hide-message col-sm-8 col-sm-offset-2" *ngIf="isShow">
+      <div class="alert" [ngClass]="css">{{message}}</div>
+    </div>
+    <div class="row">
+      <div class="inner-wrapper-main">
+        <div class="col-sm-12">
+          <h1>{{classe.name}}</h1>
+          <div class="courses course-details">
+            <div class="col-sm-5 course-thumb"> <img src="https://placeholdit.imgix.net/~text?txtsize=100&bg=333&txtclr=cccccc&txt=560%C3%97373&w=560&h=373" alt="Course Image"></div>
+            <div class="col-sm-7 course-cnt">
+              <!--<h3>Lorem Ipsum is simply dummy</h3>-->
+              <ul class="area-period">
+                <a href="#" data-toggle="modal" data-target="#activate_class" class="btn btn-success" role="button" *ngIf="!isActivated && (user.userRole == 'admin' || user.userRole == 'assistant' ) && can_activate">Activate</a>
+                <a href="#" data-toggle="modal" data-target="#extra_class" class="btn btn-primary" role="button" *ngIf="!isActivated && (user.userRole == 'admin' || user.userRole == 'assistant' ) && !can_activate">Set up Extra Class</a>
+                <a href="#" data-toggle="modal" data-target="#deactivate_class" class="btn btn-danger" role="button" *ngIf="isActivated && (user.userRole == 'admin' || user.userRole == 'assistant' )">Deactivate</a>
+                <a href="#" class="btn btn-primary" role="button" *ngIf="!isActivated && (user.userRole == 'admin' || user.userRole == 'assistant' )">Edit</a>
+                <a href="#" data-toggle="modal" data-target="#delete_class" class="btn btn-danger" role="button" *ngIf="!isActivated && user.userRole == 'admin'">Delete</a>
+                <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#register_class" *ngIf="isLogged && user.userRole == 'student'">Register Now</a>
+                <a href="#" class="btn btn-primary" role="button" *ngIf="isLogged && user.userRole != 'student'">Upload Course Material</a>
+              </ul>
+              <p>Subject : {{classe.subject?.name}}</p>
+              <p>Batch : {{classe.batch?.name}}</p>
+              <p>Conducted By : {{classe.teacher?.name}}</p>
+              <p>Started on : {{classe.start_date}}</p>
+              <p>Duration : From {{classe.start_time}} to {{classe.end_time}}</p>
+              <p>Class Fees : Rs.{{classe.fees}}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="inner-wrapper-main">
+        <div class="col-sm-12">
+          <div class="courses course-details">
+            <div class="col-sm-5 course-thumb"> <img src="https://placeholdit.imgix.net/~text?txtsize=100&bg=333&txtclr=cccccc&txt=560%C3%97373&w=560&h=373" alt="Course Image"></div>
+            <div class="col-sm-7 course-cnt">
+              <h3>About Teacher</h3>
+
+              <p>{{classe.subject?.description}}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="modal fade" id="delete_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete the class</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to delete this class ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-danger" id="btn-class-remove-yes" data-dismiss="modal" (click)="deleteClass(classe._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="activate_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Activate the class</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to Activate this class ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-success" data-dismiss="modal" (click)="activateClass(classe._id)">Activate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deactivate_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Deactivate the class</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to deactivate this class ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-danger" data-dismiss="modal" (click)="deactivateClass(classe._id)">Deactivate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="register_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Register for this Class {{classe.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to register for class ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-primary" data-dismiss="modal" (click)="registerClass({classId: classe._id, userId: user.userId})">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="extra_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Set up extra Class for {{classe.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div  class="col-md-12">
+            <div class="inline-container">
+              <div class="col-md-12">
+                Are you sure want to setup an Extra class ?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button class_id="" class="btn btn-primary" data-dismiss="modal" (click)="setUpExtraClass(classe._id)">Set Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+

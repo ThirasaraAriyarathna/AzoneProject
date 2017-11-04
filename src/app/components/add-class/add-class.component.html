@@ -18,12 +18,8 @@
                 <div class="col-sm-6">
                   <label>Subject</label>
                   <div class="input-group">
-                    <app-dropdown [values]="tdrops" (changeValue)="setSubject($event)"></app-dropdown>
-                    <div class="input-group-btn" >
-                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
-                        <span class="glyphicon glyphicon-plus"></span>
-                      </a>
-                    </div>
+                    <app-dropdown [values]="sdrops" (changeValue)="setSubject($event)"></app-dropdown>
+                    <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-plus"></i></a></span>
                   </div>
                 </div>
               </div>
@@ -31,37 +27,33 @@
                 <div class="col-sm-6">
                   <label>Batch</label>
                   <div class="input-group">
-                    <app-dropdown [values]="tdrops" (changeValue)="setBatch($event)"></app-dropdown>
-                    <div class="input-group-btn" >
-                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
-                        <span class="glyphicon glyphicon-plus"></span>
-                      </a>
-                    </div>
+                    <app-dropdown [values]="bdrops" (changeValue)="setBatch($event)"></app-dropdown>
+                    <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-plus"></i></a></span>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <label>Teacher</label>
                   <div class="input-group">
                     <app-dropdown [values]="tdrops" (changeValue)="setTeacher($event)"></app-dropdown>
-                    <div class="input-group-btn" >
-                      <a href="#" data-toggle="modal" data-target="#batchModal" class="btn btn-default btn-flat" >
-                        <span class="glyphicon glyphicon-plus"></span>
-                      </a>
-                    </div>
+                    <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-plus"></i></a></span>
                   </div>
                 </div>
               </div>
+              <br><br>
               <div class="row">
-                <div class="col-sm-6 form-group">
-                  <div>
-                    <label>Fees</label>
+                <div class="col-sm-6">
+                  <label>Fees</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">Rs</span>
+                    <input type="number" class="form-control bfh-number" required [(ngModel)]="class.fees" name="class.fees" placeholder="Fees" data-min="0" data-max="9999999">
+                    <span class="input-group-addon">.00</span>
                   </div>
-                  <span class="btn btn-default btn-flat">RS</span><input type="number" required placeholder="Fees" value="" [(ngModel)]="class.fees" name="class.fees" class="txt">
                 </div>
                 <!--<div class="col-sm-6">-->
                   <!--<input [ngModel]="myDate | date: 'shortTime'" name="myDate" (ngModel)="myDate" ngui-datetime-picker time-only="true" />-->
                 <!--</div>-->
               </div>
+              <br><br>
               <div class="row">
                 <div class="col-sm-6">
                   <label>Start Date</label>
@@ -72,6 +64,7 @@
                   <ng2-datepicker [(ngModel)]="endDate" name="endDate" [options]="optionsEnd" ></ng2-datepicker>
                 </div>
               </div>
+              <br><br>
               <div class="row">
                 <div class="col-sm-6">
                   <label>Start Time</label>
@@ -90,3 +83,11 @@
     </div>
   </div>
 </section>
+
+<!--<div class="col-sm-4">-->
+  <!--<div class="input-group">-->
+    <!--<span class="input-group-addon">$</span>-->
+    <!--<input type="text" class="form-control bfh-number" id="product_price" placeholder="Price" data-min="0" data-max="9999999">-->
+    <!--<span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-earphone"></i></a></span>-->
+  <!--</div>-->
+<!--</div>-->
